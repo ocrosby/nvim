@@ -61,29 +61,43 @@ The repository contains a file `init.lua`. This is the main configuration file t
 
 The goal of nvim-treesitter is both to provide a simple and easy way to use the interface for tree-sitter in Neovim and to provide some basic functionality such as highlighting based on it
 
+--- 
+
 ### [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 
 A highly extendable fuzzy finder over lists.
+
+---
 
 ### [DAP (Debug Adapter Protocol)](https://github.com/mfussenegger/nvim-dap)
 
 A Debug Adapter Protocol client implementation.
 
+---
+
 ### [Gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 
 Deep buffer integration for Git.
+
+---
 
 ### [Trouble](https://github.com/folke/trouble.nvim)
 
 A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
 
+---
+
 ### [Zen Mode](https://github.com/folke/zen-mode.nvim)
 
 Distraction-free coding for Neovim.
 
+---
+
 ### [Neogit](https://github.com/NeogitOrg/neogit)
 
 A git interface for Neovim that is fast and easy to use.
+
+---
 
 ### [Lualine](https://github.com/nvim-lualine/lualine.nvim)
 
