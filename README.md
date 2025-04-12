@@ -58,9 +58,12 @@ The repository contains a file `init.lua`. This is the main configuration file t
 ## Components
 
 ### [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+
+The goal of nvim-treesitter is both to provide a simple and easy way to use the interface for tree-sitter in Neovim and to provide some basic functionality such as highlighting based on it
+
 ### [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 
-
+A highly extendable fuzzy finder over lists.
 
 ### [DAP (Debug Adapter Protocol)](https://github.com/mfussenegger/nvim-dap)
 
