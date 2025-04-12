@@ -2,7 +2,8 @@
 
 My personal neovim settings.
 
-Neovim is a customizable text and code editor based on the Vim text editor. Neovim aims to provide Vim’s fast and versatile user experience, but with enhanced extensibility, usability and features.
+Neovim is a customizable text and code editor based on the Vim text editor. Neovim aims to provide Vim’s fast and 
+versatile user experience, but with enhanced extensibility, usability and features.
 
 ## Directory Structure
 
@@ -53,6 +54,38 @@ While Neovim is built as an extension of Vim, it has a few key differences:
 ## Setup
 
 The repository contains a file `init.lua`. This is the main configuration file that is needed.  In addition, there are a few other files. To use this configuration, you would copy all these files into your `nvim` directory.
+
+## Components
+
+### [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+### [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+
+
+
+### [DAP (Debug Adapter Protocol)](https://github.com/mfussenegger/nvim-dap)
+
+A Debug Adapter Protocol client implementation.
+
+### [Gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+
+Deep buffer integration for Git.
+
+### [Trouble](https://github.com/folke/trouble.nvim)
+
+A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
+
+### [Zen Mode](https://github.com/folke/zen-mode.nvim)
+
+Distraction-free coding for Neovim.
+
+### [Neogit](https://github.com/NeogitOrg/neogit)
+
+A git interface for Neovim that is fast and easy to use.
+
+### [Lualine](https://github.com/nvim-lualine/lualine.nvim)
+
+A blazing fast and easy to configure Neovim statusline written in Lua.
+
 
 ## References
 
