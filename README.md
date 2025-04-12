@@ -106,6 +106,7 @@ A blazing fast and easy to configure Neovim statusline written in Lua.
 
 ## References
 
+- [Nerd Fonts](https://www.nerdfonts.com/)
 - [LunarVim](https://github.com/LunarVim/LunarVim)
 - [Kickstart.vim](https://github.com/nvim-lua/kickstart.nvim)
 - [AstroNvim](https://github.com/AstroNvim/AstroNvim?ref=playfulpython.com)
