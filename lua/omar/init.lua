@@ -1,10 +1,13 @@
 -- Core settings
 require("omar.core.options")
 require("omar.core.keymaps")
--- require("omar.core.autocmds") -- Uncomment if you add this file
+require("omar.core.autocmds") -- Uncomment if you add this file
 
 -- Plugin manager + plugin declarations
 require("omar.plugins.init")
+
+-- 🎨 Set the colorscheme/theme here
+require("omar.config.theme")
 
 -- Plugin-specific configurations
 require("omar.config.lsp")
