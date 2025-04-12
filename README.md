@@ -117,3 +117,6 @@ A blazing fast and easy to configure Neovim statusline written in Lua.
 - [Python in Neovim](https://www.youtube.com/watch?v=IobijoroGE0&pp=ygUNbmVvdmltIHB5dGhvbg%3D%3D)
 - [How to Setup Neovim To Make It Amazing in 2024](https://www.youtube.com/watch?v=6pAG3BHurdM&t=29s&pp=ygUNbmVvdmltIHB5dGhvbtIHCQl-CQGHKiGM7w%3D%3D)
 - [Full Neovim Setup from Scratch in 2025](https://www.youtube.com/watch?v=KYDG3AHgYEs&t=58s&pp=ygUNbmVvdmltIHB5dGhvbg%3D%3D)
+- [Python in Neovim](https://www.youtube.com/watch?v=jWZ_JeLgDxU&pp=ygUNbmVvdmltIHB5dGhvbg%3D%3D)
+- [Debug Pythgon in Neovim](https://www.youtube.com/watch?v=tfC1i32eW3A&pp=ygUNbmVvdmltIHB5dGhvbg%3D%3D)
+- [Neovim for Newbs](https://www.youtube.com/watch?v=zHTeCSVAFNY&list=PLsz00TDipIffreIaUNk64KxTIkQaGguqn)
