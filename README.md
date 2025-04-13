@@ -5,6 +5,14 @@ My personal neovim settings.
 Neovim is a customizable text and code editor based on the Vim text editor. Neovim aims to provide Vim’s fast and 
 versatile user experience, but with enhanced extensibility, usability and features.
 
+## Getting Started 
+
+Getting started with a custom neovim configuration is difficult. Looking through the various tutorials
+and articles out there I found that none did a good job of explaining what all this lua configuration
+junk was about, until I found [Neovim for Newbs](https://typecraft.dev/neovim-for-newbs). I would strongly
+recommend that anyone interested in customizing neovim read through that article and watch the videos that 
+are linked in it. It is a great introduction to neovim configuration in lua.
+
 ## Directory Structure
 
 ```plaintext
@@ -41,7 +49,7 @@ versatile user experience, but with enhanced extensibility, usability and featur
             └── functions.lua
 ```
 
-## How is Neovim different than Vim?
+## How is Neovim different from Vim?
 
 While Neovim is built as an extension of Vim, it has a few key differences:
 
@@ -53,15 +61,51 @@ While Neovim is built as an extension of Vim, it has a few key differences:
 
 ## Setup
 
+```shell
+brew install neovim
+```
+
+While editing `.config/nvim/init.lua`, you can use the following command to reload the configuration:
+
+```shell
+:source ~/.config/nvim/init.lua
+```
+
+or if you have the `~/.config/nvim/init.load` file open you can
+
+```shell
+:source %
+```
+
+The result will be that nvim will reload its configuration.
+
+
+1. The init.lua file
+
+The convention is that it goes in `'~.config/nvim/init.lua`
+nvim will automatically load this file
+
+2. Choose an install package manager (lazy.nvim)
+3. Install our first package (Colorscheme)
+4. Fuzzy finding file and grepping through your codebase (Telescope)
+5. Highlighting and indenting (Treesitter)
+
+
 The repository contains a file `init.lua`. This is the main configuration file that is needed.  In addition, there are a few other files. To use this configuration, you would copy all these files into your `nvim` directory.
 
 ## Components
 
 ### [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
-The goal of nvim-treesitter is both to provide a simple and easy way to use the interface for tree-sitter in Neovim and to provide some basic functionality such as highlighting based on it
+The goal of nvim-treesitter is both to provide a simple and easy way to use the interface for tree-sitter in Neovim and to provide some basic functionality such as highlighting based on it.
 
---- 
+---
+
+### [Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
+
+A file explorer for Neovim written in Lua.
+
+---
 
 ### [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 
@@ -103,6 +147,13 @@ A git interface for Neovim that is fast and easy to use.
 
 A blazing fast and easy to configure Neovim statusline written in Lua.
 
+### [Catppuccin Color Scheme](https://github.com/catppuccin/nvim)
+
+### Shortcuts
+
+Find Files `Ctrl + p` or `<leader>ff`
+Live Grep `<leader>fg`
+
 
 ## References
 
@@ -111,6 +162,7 @@ A blazing fast and easy to configure Neovim statusline written in Lua.
 - [Kickstart.vim](https://github.com/nvim-lua/kickstart.nvim)
 - [AstroNvim](https://github.com/AstroNvim/AstroNvim?ref=playfulpython.com)
 - [LazyVim](https://github.com/LazyVim/LazyVim)
+- [Lazy Site](https://lazy.folke.io/)
 - [Programming in Lua](https://www.lua.org/pil/contents.html?ref=playfulpython.com)
 - [Neovim Configuration for Beginners](https://builtin.com/software-engineering-perspectives/neovim-configuration)
 - [NeoVim Full Setup Guide](https://youtu.be/JWReY93Vl6g)
@@ -120,4 +172,5 @@ A blazing fast and easy to configure Neovim statusline written in Lua.
 - [Full Neovim Setup from Scratch in 2025](https://www.youtube.com/watch?v=KYDG3AHgYEs&t=58s&pp=ygUNbmVvdmltIHB5dGhvbg%3D%3D)
 - [Python in Neovim](https://www.youtube.com/watch?v=jWZ_JeLgDxU&pp=ygUNbmVvdmltIHB5dGhvbg%3D%3D)
 - [Debug Pythgon in Neovim](https://www.youtube.com/watch?v=tfC1i32eW3A&pp=ygUNbmVvdmltIHB5dGhvbg%3D%3D)
-- [Neovim for Newbs](https://www.youtube.com/watch?v=zHTeCSVAFNY&list=PLsz00TDipIffreIaUNk64KxTIkQaGguqn)
+- [Neovim for Newbs](https://typecraft.dev/neovim-for-newbs)
+- [Neovim Lua Guide](https://github.com/nanotee/nvim-lua-guide)
