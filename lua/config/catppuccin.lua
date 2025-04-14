@@ -1,5 +1,5 @@
 require("catppuccin").setup({
-    flavour = "mocha", -- Choose your preferred flavor: latte, frappe, macchiato, mocha
+    flavour = "latte", -- Choose your preferred flavor: latte, frappe, macchiato, mocha
     integrations = {
         treesitter = true,
         lsp_trouble = true,
