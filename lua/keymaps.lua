@@ -1,7 +1,3 @@
--- Set leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- Save and Quit
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit window" })
@@ -18,11 +14,13 @@ vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "Move to right window" })
 
 -- Telescope Keymaps
 local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Search text in files" })
+vim.keymap.set('n', '<C-p>', builtin.find_files, {})     -- Ctrl + P to find files
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) -- Ctrl + P to find files
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {}) -- Ctrl + Shift + F to search in files
+
 
 -- Neotree Keymaps
-vim.keymap.set('n', '<leader>n', ':Neotree toggle<CR>', { desc = "Toggle Neotree" })
+vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<CR>', { desc = "Toggle NvimTree" })
 
 -- Tree-sitter Incremental Selection
 vim.keymap.set("n", "gnn", ":lua require'nvim-treesitter.incremental_selection'.init_selection()<CR>", { desc = "Init selection" })
