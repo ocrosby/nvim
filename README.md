@@ -93,6 +93,18 @@ nvim will automatically load this file
 
 The repository contains a file `init.lua`. This is the main configuration file that is needed.  In addition, there are a few other files. To use this configuration, you would copy all these files into your `nvim` directory.
 
+## Resetting Plugins for Lazy.nvim
+
+If you want to reset the plugins for lazy.nvim, you can do so by running the following commands:
+
+```shell
+# Delete the lazy directory inside ~/.local/share/nvim:
+# Optionally, you can also clear the ~/.local/state/nvim directory, which may store additional state data:
+rm -rf ~/.local/share/nvim/lazy && rm -rf ~/.local/state/nvim
+```
+
+Restart Neovim. Lazy.nvim will detect the missing data and re-install the plugins automatically.
+
 ## Components
 
 ### [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
