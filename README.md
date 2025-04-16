@@ -195,3 +195,4 @@ Live Grep `<leader>fg`
 - [Neovim for Newbs](https://typecraft.dev/neovim-for-newbs)
 - [Neovim Lua Guide](https://github.com/nanotee/nvim-lua-guide)
 - [ThePrimeagen](https://github.com/ThePrimeagen/init.lua)
+- [0 to LSP: Neovim RC From Scratch](https://www.youtube.com/watch?v=w7i4amO_zaE)

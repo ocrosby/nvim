@@ -25,10 +25,9 @@ telescope.setup({
 
 -- Telescope Keymaps
 local builtin = require("telescope.builtin")
-vim.keymap.set('n', '<C-p>', builtin.find_files, {})     -- Ctrl + P to find files
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})     -- Ctrl + P to find git files
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) -- Ctrl + P to find files
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {}) -- Ctrl + Shift + F to search in files
-
 
 -- Load Telescope extensions if any
 -- telescope.load_extension("fzf")
