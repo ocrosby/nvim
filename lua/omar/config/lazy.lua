@@ -25,7 +25,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
         -- import your plugins
-        { import = "plugins" }, -- Import the plugins directory from `lua/plugins/init.lua`
+        { import = "omar.plugins" }, -- Import the plugins directory from `lua/plugins/init.lua`
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
@@ -67,5 +67,4 @@ require("lazy").setup({
 })
 
 -- After this call to `lazy.setup()`, you can use any of the plugins
--- Since the lazy setup imports the plugins from the `plugins` directory,
--- the `lua/plugins/init.lua` file is not needed anymore.
+

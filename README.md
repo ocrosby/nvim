@@ -59,6 +59,14 @@ While Neovim is built as an extension of Vim, it has a few key differences:
 - Both Neovim and Vim offer robust plugin support, though Neovim has an enhanced graphical user interface (GUI) ecosystem and a more active development community.
 - Both Neovim and Vim have plugins that are compatible with each other, though both also have plugins that are only Neovim-compatible or only Vim-compatible.
 
+## Prerequisites
+
+### RipGrep
+
+```shell
+brew install ripgrep
+```
+
 ## Setup
 
 ```shell
@@ -186,3 +194,4 @@ Live Grep `<leader>fg`
 - [Debug Pythgon in Neovim](https://www.youtube.com/watch?v=tfC1i32eW3A&pp=ygUNbmVvdmltIHB5dGhvbg%3D%3D)
 - [Neovim for Newbs](https://typecraft.dev/neovim-for-newbs)
 - [Neovim Lua Guide](https://github.com/nanotee/nvim-lua-guide)
+- [ThePrimeagen](https://github.com/ThePrimeagen/init.lua)
