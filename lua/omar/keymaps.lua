@@ -96,3 +96,6 @@ vim.keymap.set("n", "<leader>xr", "<cmd>TroubleToggle lsp_references<cr>", { des
 vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { desc = "Location list" })
 vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Quickfix list" })
 
+-- Codesnap Keymaps
+vim.keymap.set("v", "<leader>cs", ":CodeSnap<CR>", { desc = "Take CodeSnap Screenshot" })
+

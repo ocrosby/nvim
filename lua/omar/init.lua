@@ -4,4 +4,5 @@ vim.g.loaded_netrwPlugin = 1
 
 require("omar.set") -- Load settings
 require("omar.keymaps") -- Load keymaps
+require("omar.autocmds") -- Load autocmds early
 require("omar.config.lazy")  -- Load lazy.nvim
