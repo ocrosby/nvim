@@ -21,7 +21,7 @@ introduction to neovim configuration in lua.
 
 ```shell
 git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git ~/.nerd-fonts
-cd ~/.nerd-fonts
+id ~/.nerd-fonts
 ./install.sh Hack  # or FiraCode, JetBrainsMono, etc.
 ```
 
@@ -87,6 +87,7 @@ While Neovim is built as an extension of Vim, it has a few key differences:
 
 ```shell
 brew install ripgrep
+brew install shellcheck
 ```
 
 ## Setup

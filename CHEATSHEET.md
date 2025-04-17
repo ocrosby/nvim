@@ -1,5 +1,9 @@
 # 🧠 Neovim Keymap Cheat Sheet
 
+Now when you open a .py file ruff should lint it automatically
+<leader>f on a .py file should use ruff to format it if there are no syntax errors
+
+
 ## 🏁 Leader Key
 | Mode | Mapping        | Action                      |
 |------|----------------|-----------------------------|
