@@ -2,16 +2,20 @@
 
 My personal neovim settings.
 
-Neovim is a customizable text and code editor based on the Vim text editor. Neovim aims to provide Vim’s fast and 
-versatile user experience, but with enhanced extensibility, usability and features.
+Neovim is a customizable text and code editor based on the Vim text editor. 
+Neovim aims to provide Vim’s fast and
+versitile user experience, but with enhanced extensibility, usability and 
+features.
 
 ## Getting Started 
 
-Getting started with a custom neovim configuration is difficult. Looking through the various tutorials
-and articles out there I found that none did a good job of explaining what all this lua configuration
-junk was about, until I found [Neovim for Newbs](https://typecraft.dev/neovim-for-newbs). I would strongly
-recommend that anyone interested in customizing neovim read through that article and watch the videos that 
-are linked in it. It is a great introduction to neovim configuration in lua.
+Getting started with a custom neovim configuration is difficult. Looking 
+through the various tutorials and articles out there I found that none did 
+a good job of explaining what all this lua configuration junk was about, 
+until I found [Neovim for Newbs](https://typecraft.dev/neovim-for-newbs). I 
+would strongly recommend that anyone interested in customizing neovim read 
+through that article and watch the videos that are linked in it. It is a great 
+introduction to neovim configuration in lua.
 
 ## Directory Structure
 
@@ -68,6 +72,14 @@ brew install ripgrep
 ```
 
 ## Setup
+
+Backing up a previous config
+
+```shell
+mv ~/.config/nvim ~/.config/nvim.bak
+rm -rf ~/.local/share/nvim
+```
+
 
 ```shell
 brew install neovim
