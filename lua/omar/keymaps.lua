@@ -3,7 +3,26 @@ vim.g.mapleader = " "       -- Set leader key to space
 vim.g.maplocalleader = "\\" -- Set local leader key to backslash
 
 -- NvimTree Keymaps
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = "Toggle NvimTree" })
+vim.keymap.set('n', '<leader>e', function()
+  local view = require("nvim-tree.view")
+
+  if not view.is_visible() then
+    -- If NvimTree isn't visible, open it
+    vim.cmd("NvimTreeOpen")
+    return
+  end
+
+  local tree_win = view.get_winnr()
+  local curr_win = vim.api.nvim_get_current_win()
+
+  if curr_win == tree_win then
+    -- You're in the tree → go to the right (your editor)
+    vim.cmd("wincmd l")
+  else
+    -- You're in the editor → focus the tree
+    vim.cmd("NvimTreeFocus")
+  end
+end, { desc = "Toggle focus between NvimTree and editor" })
 
 -- Move Lines in Visual Mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
@@ -32,6 +51,8 @@ vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "Move to bottom window" })
 vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "Move to top window" })
 vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "Move to right window" })
 
+-- Yank the contents of the buffer to the clipboard
+vim.keymap.set("n", "<leader>y", ":%y+<CR>", { noremap = true, silent = true })
 
 -- Vim-With-Me (Pair Programming)
 -- Start/stop a collaborative editing session.
