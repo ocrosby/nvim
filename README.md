@@ -17,6 +17,24 @@ would strongly recommend that anyone interested in customizing neovim read
 through that article and watch the videos that are linked in it. It is a great 
 introduction to neovim configuration in lua.
 
+## Installing Nerd Fonts
+
+```shell
+git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git ~/.nerd-fonts
+cd ~/.nerd-fonts
+./install.sh Hack  # or FiraCode, JetBrainsMono, etc.
+```
+
+That will install a full patched font set to your local font directory.
+Warning: It takes a minute!
+
+Update yoru Ghostty config:
+
+```toml
+# ~/.config/ghostty/config
+font-family = "JetBrainsMono Nerd Font"
+```
+
 ## Directory Structure
 
 ```plaintext
