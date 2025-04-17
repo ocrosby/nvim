@@ -3,6 +3,6 @@ return {
   cmd = "Mason",
   build = ":MasonUpdate",
   config = function()
-    require("mason").setup()
+    require("omar.config.mason").setup()
   end,
 }
