@@ -78,9 +78,8 @@ vim.keymap.set("n", "gnn", ":lua require'nvim-treesitter.incremental_selection'.
 vim.keymap.set("n", "grc", ":lua require'nvim-treesitter.incremental_selection'.scope_incremental()<CR>", { desc = "Scope incremental" })
 vim.keymap.set("n", "grm", ":lua require'nvim-treesitter.incremental_selection'.node_decremental()<CR>", { desc = "Node decremental" })
 
-vim.keymap.set('n', '<leader>ps', function()
-    builtin.grep_string({ search = vim.fn.input("Grep > ") });
-end)
+vim.keymap.set('n', "<leader>gb", "<cmd>Telescope git_branches<CR>", { desc = "Git branches" })
+vim.keymap.set('n', '<leader>ps', "<cmd>Telescope grep_string<CR>", { desc = "Grep for string" })
 
 
 -- Neogit Keymaps
@@ -88,4 +87,12 @@ vim.keymap.set("n", "<leader>g", "<cmd>Neogit<CR>", { desc = "Open Neogit" })
 vim.keymap.set("n", "<leader>gc", "<cmd>Neogit commit<CR>", { desc = "Commit with Neogit" })
 vim.keymap.set("n", "<leader>gp", "<cmd>Neogit push<CR>", { desc = "Push with Neogit" })
 vim.keymap.set("n", "<leader>gl", "<cmd>Neogit pull<CR>", { desc = "Pull with Neogit" })
+
+-- Trouble.nvim Keymaps
+vim.keymap.set("n", "<leader>x", "<cmd>TroubleToggle<cr>", { desc = "Toggle Trouble" })
+vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { desc = "Workspace diagnostics" })
+vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { desc = "Document diagnostics" })
+vim.keymap.set("n", "<leader>xr", "<cmd>TroubleToggle lsp_references<cr>", { desc = "LSP references" })
+vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { desc = "Location list" })
+vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Quickfix list" })
 
