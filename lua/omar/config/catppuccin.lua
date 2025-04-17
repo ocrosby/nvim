@@ -1,10 +1,15 @@
+print("⚡ Forcing Catppuccin Latte")
+
+vim.g.catppuccin_flavour = "latte"
+vim.opt.background = "light" -- Set before applying the theme
+
 require("catppuccin").setup({
     flavour = "latte", -- Choose your preferred flavor: latte, frappe, macchiato, mocha
     background = {
         light = "latte",
         dark = "mocha",
     },
-    transparent_background = true, -- disables setting the background color.
+    transparent_background = false, -- disables setting the background color.
     show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
     term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`).
     dim_inactive = {
@@ -38,20 +43,34 @@ require("catppuccin").setup({
         gitsigns = true,
         nvimtree = true,
         treesitter = true,
+        telescope = true,
+        lsp_trouble = true,
+        dap = true,
         notify = false,
         mini = {
             enabled = true,
             indentscope_color = "",
         },
-        --lsp_trouble = true,
-        --telescope = true,
-        --gitsigns = true,
-        --nvimtree = true,
-        --lualine = true,
-        --cmp = true,
-        --dap = true,
     },
 })
 
 -- setup must be called before loading
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme("catppuccin")
+
+print("🌈 Flavor after setup:", vim.g.catppuccin_flavour)
+
+local function set_transparent_background()
+  local groups = {
+    "Normal", "NormalNC", "NormalFloat",
+    "FloatBorder", "Pmenu", "PmenuSel",
+    "TelescopeNormal", "TelescopeBorder",
+    "NvimTreeNormal"
+  }
+
+  for _, group in ipairs(groups) do
+    vim.api.nvim_set_hl(0, group, { bg = "none" })
+  end
+end
+
+set_transparent_background()
+

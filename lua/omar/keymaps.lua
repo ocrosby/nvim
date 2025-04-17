@@ -24,6 +24,19 @@ vim.keymap.set('n', '<leader>e', function()
   end
 end, { desc = "Toggle focus between NvimTree and editor" })
 
+-- pressing <leader>nf while in the tree will create a new file wherever you are
+vim.keymap.set("n", "<leader>nf", function()
+  local api = require("nvim-tree.api")
+  local node = api.tree.get_node_under_cursor()
+  local path = node and (node.type == "directory" and node.absolute_path or vim.fn.fnamemodify(node.absolute_path, ":h")) or vim.fn.getcwd()
+
+  vim.ui.input({ prompt = "New file name: ", default = path .. "/" }, function(input)
+    if input and input ~= "" then
+      vim.cmd("e " .. input)
+    end
+  end)
+end, { desc = "Create new file from NvimTree location" })
+
 -- Move Lines in Visual Mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
