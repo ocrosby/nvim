@@ -2,6 +2,8 @@
 
 My personal neovim settings.
 
+For a rundown of my keymaps check out my [cheatsheet](CHEATSHEET.md).
+
 Neovim is a customizable text and code editor based on the Vim text editor. 
 Neovim aims to provide Vim’s fast and
 versitile user experience, but with enhanced extensibility, usability and 
