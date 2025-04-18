@@ -1,157 +1,221 @@
-# 🧠 Neovim Keymap Cheat Sheet
+# 🧠 Neovim Keymap Cheatsheet
 
 Now when you open a .py file ruff should lint it automatically
 <leader>f on a .py file should use ruff to format it if there are no syntax errors
 
-
-## 🏁 Leader Key
-| Mode | Mapping        | Action                      |
-|------|----------------|-----------------------------|
-| n    | `<Space>`      | Sets space as leader key    |
+## Leader Keys
+- `<Space>` → Leader key
+- `\` → Local leader key
 
 ---
 
-## 📁 File Explorer
-| Mode | Mapping     | Action                         |
-|------|-------------|--------------------------------|
-| n    | `<leader>e` | Open `:NvimTree` file explorer |
+## File Management
+| Keymap          | Action                             |
+|-----------------|------------------------------------|
+| `<leader>w`     | Save file                          |
+| `<leader>q`     | Quit window                        |
+| `<leader>s`     | Quick save                         |
+| `<leader>nf`    | New file at NvimTree location      |
+| `<leader>bd`    | Delete current buffer              |
+| `<leader>ba`    | Close all buffers except current   |
 
 ---
 
-## 🔁 Move Lines in Visual Mode
-| Mode | Mapping | Action                           |
-|------|---------|----------------------------------|
-| v    | `J`     | Move selected lines **down**     |
-| v    | `K`     | Move selected lines **up**       |
+## NvimTree
+| Keymap        | Action                                        |
+|---------------|-----------------------------------------------|
+| `<leader>e`   | Toggle focus between NvimTree and editor      |
 
 ---
 
-## 🧪 Testing
-| Mode | Mapping    | Action                     |
-|------|------------|----------------------------|
-| n    | `<leader>tf`| Run Plenary tests for file |
+## Window Navigation & Resizing
+| Keymap         | Action                       |
+|----------------|-------------------------------|
+| `<leader>h`    | Move to left window            |
+| `<leader>j`    | Move to bottom window          |
+| `<leader>k`    | Move to top window             |
+| `<leader>l`    | Move to right window           |
+| `<C-Up>`       | Increase window height         |
+| `<C-Down>`     | Decrease window height         |
+| `<C-Left>`     | Decrease window width          |
+| `<C-Right>`    | Increase window width          |
 
 ---
 
-## ✂️ Smart Joins and Scrolling
-| Mode | Mapping   | Action                          |
-|------|-----------|---------------------------------|
-| n    | `J`       | Join lines, keep cursor        |
-| n    | `<C-d>`   | Half-page down + center screen |
-| n    | `<C-u>`   | Half-page up + center screen   |
+## Buffer Navigation
+| Keymap         | Action          |
+|----------------|-----------------|
+| `<Tab>`        | Next buffer     |
+| `<S-Tab>`      | Previous buffer |
 
 ---
 
-## 🔍 Better Search Navigation
-| Mode | Mapping | Action                         |
-|------|---------|--------------------------------|
-| n    | `n`     | Next match, center screen      |
-| n    | `N`     | Previous match, center screen  |
+## Visual Mode Editing
+| Keymap | Action                       |
+|--------|------------------------------|
+| `J`    | Move selected lines down     |
+| `K`    | Move selected lines up       |
 
 ---
 
-## 🧹 Format Paragraph
-| Mode | Mapping | Action                       |
-|------|---------|------------------------------|
-| n    | `=ap`   | Format paragraph, restore pos |
+## Smarter Scrolling
+| Keymap  | Action                  |
+|---------|-------------------------|
+| `J`     | Join lines (keep cursor) |
+| `<C-d>` | Scroll down and center   |
+| `<C-u>` | Scroll up and center     |
 
 ---
 
-## 🔄 LSP
-| Mode | Mapping      | Action            |
-|------|--------------|-------------------|
-| n    | `<leader>zig`| Restart LSP server |
+## Yank to Clipboard
+| Keymap         | Action                       |
+|----------------|-------------------------------|
+| `<leader>y`    | Yank whole buffer to clipboard |
 
 ---
 
-## 👯 Vim-With-Me (Pair Programming)
-| Mode | Mapping       | Action                      |
-|------|---------------|-----------------------------|
-| n    | `<leader>vwm` | Start Vim-With-Me           |
-| n    | `<leader>svwm`| Stop Vim-With-Me            |
+## Search Enhancements
+| Keymap         | Action                       |
+|----------------|-------------------------------|
+| `<leader>nh`   | Clear search highlights       |
+| `<leader>sc`   | Toggle search case sensitivity |
 
 ---
 
-## 🧠 Clipboard & Paste
-| Mode | Mapping    | Action                             |
-|------|------------|------------------------------------|
-| x    | `<leader>p`| Paste without overwriting clipboard|
-| n/v  | `<leader>y`| Yank to system clipboard           |
-| n    | `<leader>Y`| Yank line to system clipboard      |
-| n/v  | `<leader>d`| Delete without affecting clipboard |
+## Line Numbers
+| Keymap         | Action                    |
+|----------------|----------------------------|
+| `<leader>ln`   | Toggle relative line numbers |
 
 ---
 
-## 💡 Insert Mode Tweaks
-| Mode | Mapping | Action         |
-|------|---------|----------------|
-| i    | `<C-c>` | Escape insert  |
+## Spell Check
+| Keymap         | Action              |
+|----------------|---------------------|
+| `<leader>sp`   | Toggle spell check   |
 
 ---
 
-## 🚫 Disable Unwanted Behavior
-| Mode | Mapping | Action            |
-|------|---------|-------------------|
-| n    | `Q`     | Disable `Q` command|
+## Telescope
+| Keymap         | Action                |
+|----------------|-----------------------|
+| `<leader>gb`   | Git branches           |
+| `<leader>ps`   | Grep for string        |
 
 ---
 
-## 🖥️ Tmux Integration
-| Mode | Mapping | Action                           |
-|------|---------|----------------------------------|
-| n    | `<C-f>` | Launch `tmux-sessionizer` window |
+## Git (Neogit)
+| Keymap         | Action              |
+|----------------|---------------------|
+| `<leader>gg`   | Open Neogit          |
+| `<leader>gc`   | Commit with Neogit   |
+| `<leader>gp`   | Push with Neogit     |
+| `<leader>gl`   | Pull with Neogit     |
 
 ---
 
-## 🧼 Code Formatting
-| Mode | Mapping     | Action                     |
-|------|-------------|----------------------------|
-| n    | `<leader>f` | Format buffer using Conform|
+## Trouble (Diagnostics)
+| Keymap         | Action                         |
+|----------------|---------------------------------|
+| `<leader>xx`   | Toggle Trouble                  |
+| `<leader>xw`   | Workspace diagnostics           |
+| `<leader>xd`   | Document diagnostics            |
+| `<leader>xr`   | LSP references                  |
+| `<leader>xl`   | Location list                   |
+| `<leader>xq`   | Quickfix list                   |
 
 ---
 
-## 🧭 Quickfix/Location List Navigation
-| Mode | Mapping     | Action                   |
-|------|-------------|--------------------------|
-| n    | `<C-k>`     | Next quickfix entry      |
-| n    | `<C-j>`     | Previous quickfix entry  |
-| n    | `<leader>k` | Next location list entry |
-| n    | `<leader>j` | Prev location list entry |
+## Treesitter Incremental Selection
+| Keymap         | Action                       |
+|----------------|-------------------------------|
+| `gnn`          | Initialize selection          |
+| `grc`          | Scope incremental             |
+| `grm`          | Node decremental              |
 
 ---
 
-## 🔁 Search & Replace Word Under Cursor
-| Mode | Mapping     | Action                                   |
-|------|-------------|------------------------------------------|
-| n    | `<leader>s` | Search & replace current word globally   |
+## Copilot
+| Keymap          | Action                       |
+|-----------------|-------------------------------|
+| `<C-J>` (Insert) | Accept Copilot suggestion    |
+| `<C-K>` (Insert) | Dismiss Copilot suggestion   |
+| `<C-Space>` (Insert) | Trigger Copilot completion |
+| `<leader>cp`    | Toggle Copilot                |
 
 ---
 
-## 🔓 Make File Executable
-| Mode | Mapping     | Action              |
-|------|-------------|---------------------|
-| n    | `<leader>x` | `chmod +x` on file  |
+## Codesnap
+| Keymap         | Action                      |
+|----------------|------------------------------|
+| `<leader>cs`   | Take CodeSnap Screenshot (Visual mode) |
 
 ---
 
-## 🧑‍💻 Go Error Handling Snippets
-| Mode | Mapping     | Inserted Snippet                                 |
-|------|-------------|--------------------------------------------------|
-| n    | `<leader>ee`| `if err != nil { return err }`                  |
-| n    | `<leader>ea`| `assert.NoError(err, "")`                        |
-| n    | `<leader>ef`| `log.Fatalf("error: %s", err.Error())`           |
-| n    | `<leader>el`| `logger.Error("error", "error", err)`            |
+## DAP (Debugging)
+| Keymap         | Action              |
+|----------------|---------------------|
+| `<F5>`         | Start/Continue Debugging |
+| `<F10>`        | Step Over            |
+| `<F11>`        | Step Into            |
+| `<F12>`        | Step Out             |
+| `<leader>db`   | Toggle Breakpoint    |
+| `<leader>dr`   | Open REPL             |
 
 ---
 
-## 🌧️ Fun Plugin - Cellular Automaton
-| Mode | Mapping     | Action                    |
-|------|-------------|---------------------------|
-| n    | `<leader>ca`| Run "make it rain" effect |
+## Harpoon
+| Keymap         | Action                          |
+|----------------|----------------------------------|
+| `<leader>ha`   | Add file to Harpoon              |
+| `<leader>h1`   | Navigate to Harpoon file 1       |
+| `<leader>h2`   | Navigate to Harpoon file 2       |
+| `<leader>h3`   | Navigate to Harpoon file 3       |
+| `<leader>h4`   | Navigate to Harpoon file 4       |
 
 ---
 
-## 🔁 Reload Config
-| Mode | Mapping         | Action              |
-|------|------------------|---------------------|
-| n    | `<leader><leader>`| Source current file |
+## Obsidian.nvim
+| Keymap         | Action                  |
+|----------------|--------------------------|
+| `<leader>oo`   | Open Obsidian note        |
+| `<leader>ot`   | Open today's note         |
+| `<leader>on`   | Create a new note         |
+| `<leader>os`   | Search notes              |
+| `<leader>ob`   | Show backlinks            |
+| `<leader>ol`   | Create link to another note |
+| `<leader>of`   | Follow link               |
+
+---
+
+## Zen Mode
+| Keymap         | Action                  |
+|----------------|--------------------------|
+| `<leader>zz`   | Toggle Zen Mode          |
+| `<leader>zq`   | Toggle Zen Mode + quit   |
+
+---
+
+## Pomo.nvim (Pomodoro Timer)
+| Keymap         | Action                  |
+|----------------|--------------------------|
+| `<leader>ps`   | Start Pomodoro timer     |
+| `<leader>pp`   | Pause Pomodoro timer     |
+| `<leader>pr`   | Resume Pomodoro timer    |
+| `<leader>pe`   | End Pomodoro timer       |
+
+---
+
+## Quickfix List Navigation
+| Keymap         | Action                    |
+|----------------|----------------------------|
+| `<leader>cn`   | Next quickfix item          |
+| `<leader>cp`   | Previous quickfix item      |
+
+---
+
+## Session Management
+| Keymap         | Action                  |
+|----------------|--------------------------|
+| `<leader>ss`   | Save session             |
+| `<leader>sl`   | Load session             |

@@ -83,7 +83,7 @@ vim.keymap.set('n', '<leader>ps', "<cmd>Telescope grep_string<CR>", { desc = "Gr
 
 
 -- Neogit Keymaps
-vim.keymap.set("n", "<leader>g", "<cmd>Neogit<CR>", { desc = "Open Neogit" })
+vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open Neogit" })
 vim.keymap.set("n", "<leader>gc", "<cmd>Neogit commit<CR>", { desc = "Commit with Neogit" })
 vim.keymap.set("n", "<leader>gp", "<cmd>Neogit push<CR>", { desc = "Push with Neogit" })
 vim.keymap.set("n", "<leader>gl", "<cmd>Neogit pull<CR>", { desc = "Pull with Neogit" })
@@ -126,3 +126,62 @@ if ok_mark and ok_ui then
   vim.keymap.set("n", "<leader>h3", function() ui.nav_file(3) end, { desc = "Navigate to Harpoon file 3" })
   vim.keymap.set("n", "<leader>h4", function() ui.nav_file(4) end, { desc = "Navigate to Harpoon file 4" })
 end
+
+--- Obsidian Keymaps
+vim.keymap.set("n", "<leader>oo", ":ObsidianOpen<CR>", { desc = "Open Obsidian note" })
+vim.keymap.set("n", "<leader>ot", ":ObsidianToday<CR>", { desc = "Open today's note" })
+vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { desc = "Create a new note" })
+vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", { desc = "Search notes" })
+vim.keymap.set("n", "<leader>ob", ":ObsidianBacklinks<CR>", { desc = "Show backlinks" })
+vim.keymap.set("n", "<leader>ol", ":ObsidianLink<CR>", { desc = "Create a link to another note" })
+vim.keymap.set("n", "<leader>of", ":ObsidianFollowLink<CR>", { desc = "Follow a link" })
+
+--- Zen Mode Keymaps
+vim.keymap.set("n", "<leader>zz", ":ZenMode<CR>", { desc = "Toggle Zen Mode" })
+vim.keymap.set("n", "<leader>zq", ":ZenMode<CR>:q<CR>", { desc = "Toggle Zen Mode and quit" })
+
+-- Pomo.nvim Keymaps
+vim.keymap.set("n", "<leader>ps", ":PomoStart<CR>", { desc = "Start Pomodoro timer" })
+vim.keymap.set("n", "<leader>pp", ":PomoPause<CR>", { desc = "Pause Pomodoro timer" })
+vim.keymap.set("n", "<leader>pr", ":PomoResume<CR>", { desc = "Resume Pomodoro timer" })
+vim.keymap.set("n", "<leader>pe", ":PomoEnd<CR>", { desc = "End Pomodoro timer" })
+
+-- Buffer Management Keymaps
+vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "Delete current buffer" })
+vim.keymap.set("n", "<leader>ba", ":%bd|e#|bd#<CR>", { desc = "Close all buffers except current" })
+
+-- Window Resizing Keymaps
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
+
+-- Quick Save Keymap
+vim.keymap.set("n", "<leader>s", ":w<CR>", { desc = "Save file" })
+
+-- Toggle Relative Line Numbers Keymaps
+vim.keymap.set("n", "<leader>ln", function()
+  vim.wo.relativenumber = not vim.wo.relativenumber
+end, { desc = "Toggle relative line numbers" })
+
+
+-- Search Enhancement Keymaps
+vim.keymap.set("n", "<leader>nh", ":nohlsearch<CR>", { desc = "Clear search highlights" })
+vim.keymap.set("n", "<leader>sc", function()
+  vim.o.ignorecase = not vim.o.ignorecase
+  vim.o.smartcase = not vim.o.smartcase
+  print("Search case sensitivity toggled")
+end, { desc = "Toggle search case sensitivity" })
+
+-- Toggle Spell Check Keymaps
+vim.keymap.set("n", "<leader>sp", function()
+  vim.wo.spell = not vim.wo.spell
+end, { desc = "Toggle spell check" })
+
+-- Quickfix List Navigation Keymaps
+vim.keymap.set("n", "<leader>cn", ":cnext<CR>", { desc = "Next quickfix item" })
+vim.keymap.set("n", "<leader>cp", ":cprev<CR>", { desc = "Previous quickfix item" })
+
+-- Session Management Keymaps
+vim.keymap.set("n", "<leader>ss", ":mksession!<CR>", { desc = "Save session" })
+vim.keymap.set("n", "<leader>sl", ":source Session.vim<CR>", { desc = "Load session" })

@@ -7,6 +7,14 @@ Neovim aims to provide Vim’s fast and
 versitile user experience, but with enhanced extensibility, usability and 
 features.
 
+## Prerequisites
+
+```shell
+brew install ripgrep # Required for telescope
+brew install shellcheck # Required for null-ls
+brew install pngpaste # Required for obsidian
+```
+
 ## Getting Started 
 
 Getting started with a custom neovim configuration is difficult. Looking 
@@ -98,14 +106,7 @@ While Neovim is built as an extension of Vim, it has a few key differences:
 - Both Neovim and Vim offer robust plugin support, though Neovim has an enhanced graphical user interface (GUI) ecosystem and a more active development community.
 - Both Neovim and Vim have plugins that are compatible with each other, though both also have plugins that are only Neovim-compatible or only Vim-compatible.
 
-## Prerequisites
 
-### RipGrep
-
-```shell
-brew install ripgrep
-brew install shellcheck
-```
 
 ## Setup
 

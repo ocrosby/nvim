@@ -6,6 +6,13 @@ require("trouble").setup({
   fold_closed = "",           -- symbol for closed folds
   group = true,                -- group results by file
   padding = true,              -- add an extra new line on top of the list
+  icons = {
+    error = "",
+    warning = "",
+    hint = "",
+    information = "",
+    other = "",
+  },
   action_keys = {              -- key mappings for actions in Trouble buffer
     close = "q",               -- close the list
     cancel = "<esc>",          -- cancel preview
