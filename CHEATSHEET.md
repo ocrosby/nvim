@@ -197,12 +197,14 @@ Now when you open a .py file ruff should lint it automatically
 ---
 
 ## Pomo.nvim (Pomodoro Timer)
-| Keymap         | Action                  |
-|----------------|--------------------------|
-| `<leader>ps`   | Start Pomodoro timer     |
-| `<leader>pp`   | Pause Pomodoro timer     |
-| `<leader>pr`   | Resume Pomodoro timer    |
-| `<leader>pe`   | End Pomodoro timer       |
+| Keymap         | Action                          |
+|----------------|----------------------------------|
+| `<leader>ps`   | Start Pomodoro Work timer       |
+| `<leader>pb`   | Start Pomodoro Break timer      |
+| `<leader>pl`   | Start Pomodoro Long Break timer |
+| `<leader>pr`   | Repeat last timer               |
+| `<leader>pe`   | Stop current timer              |
+| `<leader>pp`   | Start Pomodoro session          |
 
 ---
 

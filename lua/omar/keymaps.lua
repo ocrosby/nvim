@@ -141,10 +141,12 @@ vim.keymap.set("n", "<leader>zz", ":ZenMode<CR>", { desc = "Toggle Zen Mode" })
 vim.keymap.set("n", "<leader>zq", ":ZenMode<CR>:q<CR>", { desc = "Toggle Zen Mode and quit" })
 
 -- Pomo.nvim Keymaps
-vim.keymap.set("n", "<leader>ps", ":PomoStart<CR>", { desc = "Start Pomodoro timer" })
-vim.keymap.set("n", "<leader>pp", ":PomoPause<CR>", { desc = "Pause Pomodoro timer" })
-vim.keymap.set("n", "<leader>pr", ":PomoResume<CR>", { desc = "Resume Pomodoro timer" })
-vim.keymap.set("n", "<leader>pe", ":PomoEnd<CR>", { desc = "End Pomodoro timer" })
+vim.keymap.set("n", "<leader>ps", ":TimerStart 25m Work<CR>", { desc = "Start Pomodoro Work timer" })
+vim.keymap.set("n", "<leader>pb", ":TimerStart 5m Break<CR>", { desc = "Start Pomodoro Break timer" })
+vim.keymap.set("n", "<leader>pl", ":TimerStart 15m Long Break<CR>", { desc = "Start Pomodoro Long Break timer" })
+vim.keymap.set("n", "<leader>pr", ":TimerRepeat<CR>", { desc = "Repeat last timer" })
+vim.keymap.set("n", "<leader>pe", ":TimerStop<CR>", { desc = "Stop current timer" })
+vim.keymap.set("n", "<leader>pp", ":TimerStart pomodoro<CR>", { desc = "Start Pomodoro session" })
 
 -- Buffer Management Keymaps
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "Delete current buffer" })
