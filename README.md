@@ -35,6 +35,23 @@ Update yoru Ghostty config:
 font-family = "JetBrainsMono Nerd Font"
 ```
 
+## Setup Copilot
+
+In order to setup copilot execute the following command in neovim:
+
+```shell
+:Copilot setup
+```
+
+Verify authentication after completing the setup:
+
+```shell
+:Copilot status
+```
+
+If you need to re-authenticate Copilot in the future you can simply re-run the setup command.
+
+
 ## Directory Structure
 
 ```plaintext

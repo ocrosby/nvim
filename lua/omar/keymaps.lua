@@ -104,3 +104,25 @@ vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true,
 vim.api.nvim_set_keymap("i", "<C-K>", 'copilot#Dismiss()', { silent = true, expr = true, desc = "Dismiss Copilot suggestion" })
 vim.api.nvim_set_keymap("i", "<C-Space>", 'copilot#Complete()', { silent = true, expr = true, desc = "Trigger Copilot completion" })
 vim.keymap.set("n", "<leader>cp", ":Copilot toggle<CR>", { desc = "Toggle Copilot" })
+
+
+-- Dap Keymaps
+vim.keymap.set("n", "<F5>", function() require("dap").continue() end, { desc = "Start/Continue Debugging" })
+vim.keymap.set("n", "<F10>", function() require("dap").step_over() end, { desc = "Step Over" })
+vim.keymap.set("n", "<F11>", function() require("dap").step_into() end, { desc = "Step Into" })
+vim.keymap.set("n", "<F12>", function() require("dap").step_out() end, { desc = "Step Out" })
+vim.keymap.set("n", "<leader>db", function() require("dap").toggle_breakpoint() end, { desc = "Toggle Breakpoint" })
+vim.keymap.set("n", "<leader>dr", function() require("dap").repl.open() end, { desc = "Open REPL" })
+
+-- Harpoon Keymaps
+-- Harpoon Keymaps
+local ok_mark, mark = pcall(require, "harpoon.mark")
+local ok_ui, ui = pcall(require, "harpoon.ui")
+
+if ok_mark and ok_ui then
+  vim.keymap.set("n", "<leader>ha", mark.add_file, { desc = "Add file to Harpoon" })
+  vim.keymap.set("n", "<leader>h1", function() ui.nav_file(1) end, { desc = "Navigate to Harpoon file 1" })
+  vim.keymap.set("n", "<leader>h2", function() ui.nav_file(2) end, { desc = "Navigate to Harpoon file 2" })
+  vim.keymap.set("n", "<leader>h3", function() ui.nav_file(3) end, { desc = "Navigate to Harpoon file 3" })
+  vim.keymap.set("n", "<leader>h4", function() ui.nav_file(4) end, { desc = "Navigate to Harpoon file 4" })
+end

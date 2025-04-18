@@ -1,3 +1,10 @@
+
+local ok, nvim_tree = pcall(require, "nvim-tree")
+if not ok then
+    vim.api.nvim_echo({ { "nvim-tree is not installed!", "WarningMsg" } }, true, {})
+    return
+end
+
 require("nvim-tree").setup({
     sync_root_with_cwd = true,
     respect_buf_cwd = true,
@@ -8,6 +15,7 @@ require("nvim-tree").setup({
     disable_netrw = true, -- Disable netrw
     hijack_netrw = true,  -- Hijack netrw window
     renderer = {
+        highlight_opened_files = "name", -- Highlight opened files
         highlight_git = true, -- Highlight git changes
         icons = {
             show = {
@@ -23,8 +31,13 @@ require("nvim-tree").setup({
         show_on_dirs = true,
     },
     view = {
+        adaptive_size = true, -- Adjust size to fit content
         width = 30, -- Set tree width
         side = "left", -- Open tree on the left
+    },
+    filters = {
+        dotfiles = false, -- Show dotfiles
+        custom = { ".git" }, -- Ignore .git folder
     },
 })
 
