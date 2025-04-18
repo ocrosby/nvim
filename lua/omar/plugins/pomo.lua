@@ -1,6 +1,6 @@
 -- lua/omar/plugins/pomo.lua
 return {
-    "author/pomo.nvim",
+    "epwalsh/pomo.nvim",
     config = function()
         require("omar.config.pomo").setup()
     end,
