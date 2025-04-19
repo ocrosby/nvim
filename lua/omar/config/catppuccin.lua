@@ -1,10 +1,8 @@
---print("⚡ Forcing Catppuccin Latte")
-
-vim.g.catppuccin_flavour = "latte"
-vim.opt.background = "light" -- Set before applying the theme
+--vim.g.catppuccin_flavour = "latte"
+--vim.opt.background = "light" -- Set before applying the theme
 
 require("catppuccin").setup({
-    flavour = "latte", -- Choose your preferred flavor: latte, frappe, macchiato, mocha
+    flavour = "mocha", -- Choose your preferred flavor: latte, frappe, macchiato, mocha
     background = {
         light = "latte",
         dark = "mocha",
@@ -56,8 +54,6 @@ require("catppuccin").setup({
 
 -- setup must be called before loading
 vim.cmd.colorscheme("catppuccin")
-
---print("🌈 Flavor after setup:", vim.g.catppuccin_flavour)
 
 local function set_transparent_background()
   local groups = {

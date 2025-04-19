@@ -11,5 +11,11 @@ return {
     config = function()
         local pomo_config = require("omar.config.pomo")
         require("pomo").setup(pomo_config)
+
+        vim.cmd([[
+          highlight PomoStatus guifg=#cdd6f4 guibg=NONE
+          highlight PomoSubtext guifg=#cdd6f4 guibg=NONE
+          highlight PomoIcon guifg=#cdd6f4 guibg=NONE
+        ]])
     end,
 }
