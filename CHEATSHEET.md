@@ -221,3 +221,19 @@ Now when you open a .py file ruff should lint it automatically
 |----------------|--------------------------|
 | `<leader>ss`   | Save session             |
 | `<leader>sl`   | Load session             |
+
+---
+
+## Neotest
+| Keymap       | Action                         |
+|--------------|--------------------------------|
+| `<leader>tt` | Run the nearest test           |
+| `<leader>tT` | Run the entire test file       |
+| `<leader>ts` | Toggle the test summary        |
+| `<leader>to` | Show test output               |
+| `<leader>tw` | Toggle watch for the test file |
+
+---
+
+
+| Keymap         | Action                  |

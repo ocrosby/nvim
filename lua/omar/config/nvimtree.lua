@@ -36,7 +36,7 @@ require("nvim-tree").setup({
         side = "left", -- Open tree on the left
     },
     filters = {
-        dotfiles = false, -- Show dotfiles
+        dotfiles = true, -- Show dotfiles
         custom = { ".git" }, -- Ignore .git folder
     },
 })

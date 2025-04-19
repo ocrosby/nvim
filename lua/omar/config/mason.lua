@@ -18,6 +18,10 @@ return {
             "pyright",  -- Python
             "bashls",   -- Bash
             "clangd",   -- C/C++
+            "jsonls",   -- JSON
+            "taplo",  -- TOML
+            "marksman", -- Markdown
+            "yamlls", -- YAML
         },
     },
 
