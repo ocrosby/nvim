@@ -35,15 +35,21 @@ local ruff_formatting = {
   }),
 }
 
-null_ls.setup({
-  sources = {
-    ruff_diagnostics,
-    ruff_formatting,
+local diagnostics = {
+  ruff_diagnostics
+}
 
-    -- other tools if you want
+local formatting = {
+    ruff_formatting,
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.prettier,
-    null_ls.builtins.diagnostics.shellcheck,
-  },
-})
+}
 
+-- Only add shellcheck if it is executable
+--if vim.fn.executable("shellcheck") == 1 then
+--    table.insert(diagnostics, null_ls.builtins.diagnostics.shellcheck)
+--end
+
+null_ls.setup({
+  sources = vim.list_extend(diagnostics, formatting),
+})

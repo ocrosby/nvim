@@ -210,3 +210,24 @@ end, { noremap = true, silent = true, desc = "Show test output" })
 vim.keymap.set("n", "<leader>tw", function()
   require("neotest").watch.toggle(vim.fn.expand("%"))
 end, { noremap = true, silent = true, desc = "Toggle watch file" })
+
+-- Cycle Splits: Next
+vim.keymap.set("n", "<leader>wn", function()
+  -- Repeat cycling by count
+  local count = vim.v.count1 -- if user types '5<leader>wn', will cycle 5 times
+  for _ = 1, count do
+    vim.cmd("wincmd w")
+  end
+end, { noremap = true, silent = true, desc = "Move to next split" })
+
+-- Cycle Splits: Previous
+vim.keymap.set("n", "<leader>wp", function()
+  local count = vim.v.count1
+  for _ = 1, count do
+    vim.cmd("wincmd W")
+  end
+end, { noremap = true, silent = true, desc = "Move to previous split" })
+
+-- Optional: Create splits easily
+vim.keymap.set("n", "<leader>ws", ":split<CR>", { noremap = true, silent = true, desc = "Horizontal split" })
+vim.keymap.set("n", "<leader>wv", ":vsplit<CR>", { noremap = true, silent = true, desc = "Vertical split" })

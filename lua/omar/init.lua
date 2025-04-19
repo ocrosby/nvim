@@ -6,3 +6,6 @@ require("omar.options") -- Load settings
 require("omar.keymaps") -- Load keymaps
 require("omar.autocmds") -- Load autocmds early
 require("omar.config.lazy")  -- Load lazy.nvim
+
+ -- Set the default colorlscheme
+vim.cmd.colorscheme("tokyonight")
