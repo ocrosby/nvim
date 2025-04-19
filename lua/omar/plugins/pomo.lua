@@ -9,6 +9,7 @@ return {
         "rcarriga/nvim-notify", -- Notification system
     },
     config = function()
-        require("omar.config.pomo").setup()
+        local pomo_config = require("omar.config.pomo")
+        require("pomo").setup(pomo_config)
     end,
 }

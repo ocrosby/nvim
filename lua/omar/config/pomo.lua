@@ -1,4 +1,4 @@
-require("pomo").setup({
+return {
     -- How often the notifiers are updated.
     update_interval = 1000,
 
@@ -53,4 +53,4 @@ require("pomo").setup({
             { name = "Long Break", duration = "15m" },
         },
     },
-})
+}
