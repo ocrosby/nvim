@@ -43,6 +43,8 @@ vim.keymap.set("n", "<leader>nf", function()
   end)
 end, { desc = "Create new file from NvimTree location" })
 
+vim.keymap.set("n", "<leader>th", ":NvimTreeToggleDotfiles<CR>", { desc = "Toggle hidden files in NvimTree" })
+
 -- Move Lines in Visual Mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })

@@ -26,6 +26,10 @@ require("nvim-tree").setup({
             },
         },
     },
+    filesystem_watchers = {
+        enable = true, -- Enable filesystem watchers
+        debounce_delay = 50, -- Debounce delay in milliseconds
+    },
     diagnostics = {
         enable = true, -- Enable diagnostics
         show_on_dirs = true,
@@ -37,7 +41,28 @@ require("nvim-tree").setup({
     },
     filters = {
         dotfiles = true, -- Show dotfiles
-        custom = { ".git" }, -- Ignore .git folder
+        custom = { ".git", "node_modules", ".cache" }, -- Ignore .git folder, node_modules, and .cache
     },
 })
+
+-- user command to toggle dotfiles
+vim.api.nvim_create_user_command("NvimTreeToggleDotfiles", function()
+    local ok, api = pcall(require, "nvim-tree.api")
+    if not ok then
+        vim.notify("nvim-tree not loaded!", vim.log.levels.WARN)
+        return
+    end
+
+    local current = vim.g.nvimtree_show_dotfiles or false
+    vim.g.nvimtree_show_dotfiles = not current
+
+    api.tree.toggle_hidden_filter()
+    api.tree.reload()
+
+    if vim.g.nvimtree_show_dotfiles then
+        vim.notify("Showing hidden files (dotfiles)", vim.log.levels.INFO)
+    else
+        vim.notify("Hiding hidden files (dotfiles)", vim.log.levels.INFO)
+    end
+end, { desc = "Toggle showing dotfiles in NvimTree" })
 
