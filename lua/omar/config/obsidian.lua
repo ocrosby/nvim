@@ -8,11 +8,11 @@ require("obsidian").setup({
     workspaces = {
         {
             name = "personal",
-            path = "~/vaults/personal", -- Path to your personal vault
+            path = vim.fn.expand("~/vaults/personal"), -- Path to your personal vault
         },
         {
             name = "work",
-            path = "~/vaults/work", -- Path to your work vault
+            path = vim.fn.expand("~/vaults/work"), -- Path to your work vault
         },
     },
 

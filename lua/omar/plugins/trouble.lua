@@ -1,6 +1,7 @@
 return {
   "folke/trouble.nvim",
-  cmd = { "TroubleToggle", "Trouble" }, -- lazy load when you first open it dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "nvim-tree/nvim-web-devicons" }, -- optional but nice
+  cmd = { "TroubleToggle", "Trouble", "TroubleClose", "TroubleRefresh" }, -- lazy load on command
   config = function()
     require("omar.config.trouble")
   end,

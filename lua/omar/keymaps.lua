@@ -2,6 +2,12 @@
 vim.g.mapleader = " "       -- Set leader key to space
 vim.g.maplocalleader = "\\" -- Set local leader key to backslash
 
+
+-- buffers
+vim.keymap.set("n", "<leader>n", ":bn<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>p", ":bp<cr>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "Close buffer" })
+
 -- NvimTree Keymaps
 vim.keymap.set('n', '<leader>e', function()
   local view = require("nvim-tree.view")
@@ -87,14 +93,42 @@ vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open Neogit" })
 vim.keymap.set("n", "<leader>gc", "<cmd>Neogit commit<CR>", { desc = "Commit with Neogit" })
 vim.keymap.set("n", "<leader>gp", "<cmd>Neogit push<CR>", { desc = "Push with Neogit" })
 vim.keymap.set("n", "<leader>gl", "<cmd>Neogit pull<CR>", { desc = "Pull with Neogit" })
+vim.keymap.set("n", "<leader>gn", function()
+  vim.ui.input({ prompt = "New branch name: " }, function(branch)
+    if branch and branch ~= "" then
+      vim.cmd("!git checkout -b " .. branch)
+      print("Checked out new branch: " .. branch)
+    else
+      print("Branch creation cancelled.")
+    end
+  end)
+end, { desc = "Create and checkout new git branch" })
+
 
 -- Trouble.nvim Keymaps
-vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { desc = "Toggle Trouble" })
-vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { desc = "Workspace diagnostics" })
-vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { desc = "Document diagnostics" })
-vim.keymap.set("n", "<leader>xr", "<cmd>TroubleToggle lsp_references<cr>", { desc = "LSP references" })
-vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { desc = "Location list" })
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Quickfix list" })
+vim.keymap.set("n", "<leader>xx", function()
+  require("trouble").toggle("diagnostics")
+end, { desc = "Toggle document + workspace diagnostics" })
+
+vim.keymap.set("n", "<leader>xw", function()
+  require("trouble").toggle("workspace_diagnostics")
+end, { desc = "Workspace diagnostics" })
+
+vim.keymap.set("n", "<leader>xd", function()
+  require("trouble").toggle("document_diagnostics")
+end, { desc = "Document diagnostics" })
+
+vim.keymap.set("n", "<leader>xr", function()
+  require("trouble").toggle("lsp_references")
+end, { desc = "LSP references" })
+
+vim.keymap.set("n", "<leader>xl", function()
+  require("trouble").toggle("loclist")
+end, { desc = "Location list" })
+
+vim.keymap.set("n", "<leader>xq", function()
+  require("trouble").toggle("quickfix")
+end, { desc = "Quickfix list" })
 
 -- Codesnap Keymaps
 vim.keymap.set("v", "<leader>cs", ":CodeSnap<CR>", { desc = "Take CodeSnap Screenshot" })
@@ -231,3 +265,9 @@ end, { noremap = true, silent = true, desc = "Move to previous split" })
 -- Optional: Create splits easily
 vim.keymap.set("n", "<leader>ws", ":split<CR>", { noremap = true, silent = true, desc = "Horizontal split" })
 vim.keymap.set("n", "<leader>wv", ":vsplit<CR>", { noremap = true, silent = true, desc = "Vertical split" })
+
+
+-- Telescope Keymaps
+vim.keymap.set("n", "<leader>?", function()
+  require("omar.utils.telescope_keymaps").leader_keymaps_picker()
+end, { noremap = true, silent = true, desc = "Search Leader Keymaps" })

@@ -27,6 +27,33 @@ would strongly recommend that anyone interested in customizing neovim read
 through that article and watch the videos that are linked in it. It is a great 
 introduction to neovim configuration in lua.
 
+### Generating a new cheatsheet
+
+In copilot enter the following:
+
+```plaintext
+I have updated my Neovim keymaps, here they are:
+
+(paste my keymaps here as Lua)
+
+Please generate a PDF cheatsheet with the following requirements:
+- Group the keymaps into logical categories (e.g., Buffer Management, Window Navigation, Git, Search, etc.)
+- Place the most commonly used keymaps first (Core Navigation, Save/Quit, Buffer Switching, etc.)
+- Each logical group should start a new page, with a clear title at the top.
+- Use a clean, one-column layout for each page.
+- Font size should be readable (~11pt or so).
+- The file should be optimized for printing on a single-sided 8.5"x11" (Letter) or A4 page per group.
+- Final output should be a downloadable PDF.
+
+When building the groupings, prioritize:
+1. Core Navigation (Save, Quit, Move windows, Buffers, Splits)
+2. Search, Editing, and Clipboard
+3. Git, Diagnostics, and Testing
+4. Advanced Tools (Debugging, Harpoon, Codesnap, Obsidian, Pomodoro, Copilot)
+
+Please return only a download link to the finished PDF.
+```
+
 ## Installing Nerd Fonts
 
 ```shell
