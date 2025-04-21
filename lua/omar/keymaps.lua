@@ -109,7 +109,26 @@ end, { desc = "Create and checkout new git branch" })
 
 -- Trouble.nvim Keymaps
 vim.keymap.set("n", "<leader>xx", function()
-  require("trouble").toggle("diagnostics")
+  local trouble = require("trouble")
+
+  -- Check if Trouble is already open
+  if trouble.is_open() then
+    -- If it is, close it
+    trouble.close()
+    return
+  end
+
+  -- If it's not open, toggle it with the default settings  k
+  trouble.toggle("diagnostics")
+
+  -- After a short delay, focus Trouble if it's visible
+  vim.defer_fn(function()
+    local view = vim.fn.win_findbuf(vim.fn.bufnr("Trouble"))
+    if view and #view > 0 then
+      vim.api.nvim_set_current_win(view[1])
+    end
+  end, 200) -- delay 200ms for Trouble to open
+
 end, { desc = "Toggle document + workspace diagnostics" })
 
 vim.keymap.set("n", "<leader>xw", function()

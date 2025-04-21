@@ -27,6 +27,22 @@ would strongly recommend that anyone interested in customizing neovim read
 through that article and watch the videos that are linked in it. It is a great 
 introduction to neovim configuration in lua.
 
+### Slack in the Terminal!!!!
+
+```shell
+# Install weechat if you haven't
+brew install weechat
+
+# Install wee-slack manually
+mkdir -p ~/.weechat/python
+cd ~/.weechat/python
+git clone https://github.com/wee-slack/wee-slack.git
+
+# Create autoload symlink
+mkdir -p ~/.weechat/python/autoload
+ln -s ~/.weechat/python/wee-slack/wee_slack.py ~/.weechat/python/autoload/wee_slack.python
+```
+
 ### Generating a new cheatsheet
 
 In copilot enter the following:

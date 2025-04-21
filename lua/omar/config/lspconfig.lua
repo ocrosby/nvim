@@ -35,11 +35,18 @@ mason_lspconfig.setup_handlers({
     end,
 
     ["pyright"] = function()
+        local venv = os.getenv("VIRTUAL_ENV")
+        local python_path = venv and (venv .. "/bin/python") or vim.fn.exepath("python3") or "python3"
+
         lspconfig.pyright.setup({
             settings = {
                 python = {
+                    pythonPath = python_path,
                     analysis = {
                         typeCheckingMode = "basic",
+                        autoSearchPaths = true,
+                        useLibraryCodeForTypes = true,
+                        diagnosticMode = "workspace",
                     },
                 },
             },
