@@ -65,21 +65,6 @@ require("lualine").setup({
     lualine_y = {},
     lualine_z = {},
   },
-  tabline = {
-    lualine_a = {
-      {
-        "tabs",
-        mode = 2,
-        max_length = vim.o.columns / 3,
-        tabs_color = {
-          active = "lualine_a_normal",
-          inactive = "lualine_b_inactive",
-        },
-        symbols = { modified = " ●" },
-      },
-    },
-    lualine_z = { "hostname" },
-  },
   extensions = { "nvim-tree", "fugitive", "quickfix" },
 })
 
