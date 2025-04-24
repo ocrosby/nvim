@@ -2,10 +2,12 @@
 vim.g.mapleader = " "       -- Set leader key to space
 vim.g.maplocalleader = "\\" -- Set local leader key to backslash
 
--- buffers
-vim.keymap.set("n", "<leader>n", ":bn<cr>", { desc = "Next buffer" })
-vim.keymap.set("n", "<leader>p", ":bp<cr>", { desc = "Previous buffer" })
-vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "Close buffer" })
+-- Buffer Navigation 
+vim.keymap.set("n", "<leader>n", ":bn<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>p", ":bp<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>x", ":bd<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "<Tab>", ":bn<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<S-Tab>", ":bp<CR>", { desc = "Previous buffer" })
 
 -- Move Lines in Visual Mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
@@ -23,10 +25,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" }) -- Sc
 -- Save and Quit
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit window" })
-
--- Buffer Navigation
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
 
 -- Window Navigation
 vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "Move to left window" })
