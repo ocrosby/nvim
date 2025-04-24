@@ -2,48 +2,10 @@
 vim.g.mapleader = " "       -- Set leader key to space
 vim.g.maplocalleader = "\\" -- Set local leader key to backslash
 
-
 -- buffers
 vim.keymap.set("n", "<leader>n", ":bn<cr>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>p", ":bp<cr>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "Close buffer" })
-
--- NvimTree Keymaps
-vim.keymap.set('n', '<leader>e', function()
-  local view = require("nvim-tree.view")
-
-  if not view.is_visible() then
-    -- If NvimTree isn't visible, open it
-    vim.cmd("NvimTreeOpen")
-    return
-  end
-
-  local tree_win = view.get_winnr()
-  local curr_win = vim.api.nvim_get_current_win()
-
-  if curr_win == tree_win then
-    -- You're in the tree → go to the right (your editor)
-    vim.cmd("wincmd l")
-  else
-    -- You're in the editor → focus the tree
-    vim.cmd("NvimTreeFocus")
-  end
-end, { desc = "Toggle focus between NvimTree and editor" })
-
--- pressing <leader>nf while in the tree will create a new file wherever you are
-vim.keymap.set("n", "<leader>nf", function()
-  local api = require("nvim-tree.api")
-  local node = api.tree.get_node_under_cursor()
-  local path = node and (node.type == "directory" and node.absolute_path or vim.fn.fnamemodify(node.absolute_path, ":h")) or vim.fn.getcwd()
-
-  vim.ui.input({ prompt = "New file name: ", default = path .. "/" }, function(input)
-    if input and input ~= "" then
-      vim.cmd("e " .. input)
-    end
-  end)
-end, { desc = "Create new file from NvimTree location" })
-
-vim.keymap.set("n", "<leader>th", ":NvimTreeToggleDotfiles<CR>", { desc = "Toggle hidden files in NvimTree" })
 
 -- Move Lines in Visual Mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
@@ -80,129 +42,6 @@ vim.keymap.set("n", "<leader>y", ":%y+<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>vwm", function() require("vim-with-me").StartVimWithMe() end)
 vim.keymap.set("n", "<leader>svwm", function() require("vim-with-me").StopVimWithMe() end)
 
-
--- Tree-sitter Incremental Selection
-vim.keymap.set("n", "gnn", ":lua require'nvim-treesitter.incremental_selection'.init_selection()<CR>", { desc = "Init selection" })
-vim.keymap.set("n", "grc", ":lua require'nvim-treesitter.incremental_selection'.scope_incremental()<CR>", { desc = "Scope incremental" })
-vim.keymap.set("n", "grm", ":lua require'nvim-treesitter.incremental_selection'.node_decremental()<CR>", { desc = "Node decremental" })
-
-vim.keymap.set('n', "<leader>gb", "<cmd>Telescope git_branches<CR>", { desc = "Git branches" })
-vim.keymap.set('n', '<leader>ps', "<cmd>Telescope grep_string<CR>", { desc = "Grep for string" })
-
-
--- Neogit Keymaps
-vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open Neogit" })
-vim.keymap.set("n", "<leader>gc", "<cmd>Neogit commit<CR>", { desc = "Commit with Neogit" })
-vim.keymap.set("n", "<leader>gp", "<cmd>Neogit push<CR>", { desc = "Push with Neogit" })
-vim.keymap.set("n", "<leader>gl", "<cmd>Neogit pull<CR>", { desc = "Pull with Neogit" })
-vim.keymap.set("n", "<leader>gn", function()
-  vim.ui.input({ prompt = "New branch name: " }, function(branch)
-    if branch and branch ~= "" then
-      vim.cmd("!git checkout -b " .. branch)
-      print("Checked out new branch: " .. branch)
-    else
-      print("Branch creation cancelled.")
-    end
-  end)
-end, { desc = "Create and checkout new git branch" })
-
-
--- Trouble.nvim Keymaps
-vim.keymap.set("n", "<leader>xx", function()
-  local trouble = require("trouble")
-
-  -- Check if Trouble is already open
-  if trouble.is_open() then
-    -- If it is, close it
-    trouble.close()
-    return
-  end
-
-  -- If it's not open, toggle it with the default settings  k
-  trouble.toggle("diagnostics")
-
-  -- After a short delay, focus Trouble if it's visible
-  vim.defer_fn(function()
-    local view = vim.fn.win_findbuf(vim.fn.bufnr("Trouble"))
-    if view and #view > 0 then
-      vim.api.nvim_set_current_win(view[1])
-    end
-  end, 200) -- delay 200ms for Trouble to open
-
-end, { desc = "Toggle document + workspace diagnostics" })
-
-vim.keymap.set("n", "<leader>xw", function()
-  require("trouble").toggle("workspace_diagnostics")
-end, { desc = "Workspace diagnostics" })
-
-vim.keymap.set("n", "<leader>xd", function()
-  require("trouble").toggle("document_diagnostics")
-end, { desc = "Document diagnostics" })
-
-vim.keymap.set("n", "<leader>xr", function()
-  require("trouble").toggle("lsp_references")
-end, { desc = "LSP references" })
-
-vim.keymap.set("n", "<leader>xl", function()
-  require("trouble").toggle("loclist")
-end, { desc = "Location list" })
-
-vim.keymap.set("n", "<leader>xq", function()
-  require("trouble").toggle("quickfix")
-end, { desc = "Quickfix list" })
-
--- Codesnap Keymaps
-vim.keymap.set("v", "<leader>cs", ":CodeSnap<CR>", { desc = "Take CodeSnap Screenshot" })
-
--- Copilot Keymaps
-vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true, desc = "Accept Copilot suggestion" })
-vim.api.nvim_set_keymap("i", "<C-K>", 'copilot#Dismiss()', { silent = true, expr = true, desc = "Dismiss Copilot suggestion" })
-vim.api.nvim_set_keymap("i", "<C-Space>", 'copilot#Complete()', { silent = true, expr = true, desc = "Trigger Copilot completion" })
-vim.keymap.set("n", "<leader>cp", ":Copilot toggle<CR>", { desc = "Toggle Copilot" })
-
-
--- Dap Keymaps
-vim.keymap.set("n", "<F5>", function() require("dap").continue() end, { desc = "Start/Continue Debugging" })
-vim.keymap.set("n", "<F10>", function() require("dap").step_over() end, { desc = "Step Over" })
-vim.keymap.set("n", "<F11>", function() require("dap").step_into() end, { desc = "Step Into" })
-vim.keymap.set("n", "<F12>", function() require("dap").step_out() end, { desc = "Step Out" })
-vim.keymap.set("n", "<leader>db", function() require("dap").toggle_breakpoint() end, { desc = "Toggle Breakpoint" })
-vim.keymap.set("n", "<leader>dr", function() require("dap").repl.open() end, { desc = "Open REPL" })
-
--- Harpoon Keymaps
--- Harpoon Keymaps
-local ok_mark, mark = pcall(require, "harpoon.mark")
-local ok_ui, ui = pcall(require, "harpoon.ui")
-
-if ok_mark and ok_ui then
-  vim.keymap.set("n", "<leader>ha", mark.add_file, { desc = "Add file to Harpoon" })
-  vim.keymap.set("n", "<leader>h1", function() ui.nav_file(1) end, { desc = "Navigate to Harpoon file 1" })
-  vim.keymap.set("n", "<leader>h2", function() ui.nav_file(2) end, { desc = "Navigate to Harpoon file 2" })
-  vim.keymap.set("n", "<leader>h3", function() ui.nav_file(3) end, { desc = "Navigate to Harpoon file 3" })
-  vim.keymap.set("n", "<leader>h4", function() ui.nav_file(4) end, { desc = "Navigate to Harpoon file 4" })
-end
-
---- Obsidian Keymaps
-vim.keymap.set("n", "<leader>oo", ":ObsidianOpen<CR>", { desc = "Open Obsidian note" })
-vim.keymap.set("n", "<leader>ot", ":ObsidianToday<CR>", { desc = "Open today's note" })
-vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { desc = "Create a new note" })
-vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", { desc = "Search notes" })
-vim.keymap.set("n", "<leader>ob", ":ObsidianBacklinks<CR>", { desc = "Show backlinks" })
-vim.keymap.set("n", "<leader>ol", ":ObsidianLink<CR>", { desc = "Create a link to another note" })
-vim.keymap.set("n", "<leader>of", ":ObsidianFollowLink<CR>", { desc = "Follow a link" })
-
---- Zen Mode Keymaps
-vim.keymap.set("n", "<leader>zz", ":ZenMode<CR>", { desc = "Toggle Zen Mode" })
-vim.keymap.set("n", "<leader>zq", ":ZenMode<CR>:q<CR>", { desc = "Toggle Zen Mode and quit" })
-
--- Pomo.nvim Keymaps
-vim.keymap.set("n", "<leader>ps", ":TimerStart 25m Work<CR>", { desc = "Start Pomodoro Work timer" })
-vim.keymap.set("n", "<leader>pb", ":TimerStart 5m Break<CR>", { desc = "Start Pomodoro Break timer" })
-vim.keymap.set("n", "<leader>pl", ":TimerStart 15m Long Break<CR>", { desc = "Start Pomodoro Long Break timer" })
-vim.keymap.set("n", "<leader>pr", ":TimerRepeat<CR>", { desc = "Repeat last timer" })
-vim.keymap.set("n", "<leader>pe", ":TimerStop<CR>", { desc = "Stop current timer" })
-vim.keymap.set("n", "<leader>pp", ":TimerStart pomodoro<CR>", { desc = "Start Pomodoro session" })
-
 -- Buffer Management Keymaps
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "Delete current buffer" })
 vim.keymap.set("n", "<leader>ba", ":%bd|e#|bd#<CR>", { desc = "Close all buffers except current" })
@@ -220,7 +59,6 @@ vim.keymap.set("n", "<leader>s", ":w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>ln", function()
   vim.wo.relativenumber = not vim.wo.relativenumber
 end, { desc = "Toggle relative line numbers" })
-
 
 -- Search Enhancement Keymaps
 vim.keymap.set("n", "<leader>nh", ":nohlsearch<CR>", { desc = "Clear search highlights" })
@@ -243,29 +81,6 @@ vim.keymap.set("n", "<leader>cp", ":cprev<CR>", { desc = "Previous quickfix item
 vim.keymap.set("n", "<leader>ss", ":mksession!<CR>", { desc = "Save session" })
 vim.keymap.set("n", "<leader>sl", ":source Session.vim<CR>", { desc = "Load session" })
 
--- lua/omar/keymaps.lua
-
--- Keymaps for Neotest
-vim.keymap.set("n", "<leader>tt", function()
-  require("neotest").run.run()
-end, { noremap = true, silent = true, desc = "Run nearest test" })
-
-vim.keymap.set("n", "<leader>tT", function()
-  require("neotest").run.run(vim.fn.expand("%"))
-end, { noremap = true, silent = true, desc = "Run entire test file" })
-
-vim.keymap.set("n", "<leader>ts", function()
-  require("neotest").summary.toggle()
-end, { noremap = true, silent = true, desc = "Toggle test summary" })
-
-vim.keymap.set("n", "<leader>to", function()
-  require("neotest").output.open({ enter = true })
-end, { noremap = true, silent = true, desc = "Show test output" })
-
-vim.keymap.set("n", "<leader>tw", function()
-  require("neotest").watch.toggle(vim.fn.expand("%"))
-end, { noremap = true, silent = true, desc = "Toggle watch file" })
-
 -- Cycle Splits: Next
 vim.keymap.set("n", "<leader>wn", function()
   -- Repeat cycling by count
@@ -286,9 +101,3 @@ end, { noremap = true, silent = true, desc = "Move to previous split" })
 -- Optional: Create splits easily
 vim.keymap.set("n", "<leader>ws", ":split<CR>", { noremap = true, silent = true, desc = "Horizontal split" })
 vim.keymap.set("n", "<leader>wv", ":vsplit<CR>", { noremap = true, silent = true, desc = "Vertical split" })
-
-
--- Telescope Keymaps
-vim.keymap.set("n", "<leader>?", function()
-  require("omar.utils.telescope_keymaps").leader_keymaps_picker()
-end, { noremap = true, silent = true, desc = "Search Leader Keymaps" })

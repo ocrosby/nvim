@@ -17,6 +17,15 @@ return {
         },
         config = function()
             require("omar.config.obsidian") -- Load the plugin-specific configuration
+
+            --- Obsidian Keymaps
+            vim.keymap.set("n", "<leader>oo", ":ObsidianOpen<CR>", { desc = "Open Obsidian note" })
+            vim.keymap.set("n", "<leader>ot", ":ObsidianToday<CR>", { desc = "Open today's note" })
+            vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { desc = "Create a new note" })
+            vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", { desc = "Search notes" })
+            vim.keymap.set("n", "<leader>ob", ":ObsidianBacklinks<CR>", { desc = "Show backlinks" })
+            vim.keymap.set("n", "<leader>ol", ":ObsidianLink<CR>", { desc = "Create a link to another note" })
+            vim.keymap.set("n", "<leader>of", ":ObsidianFollowLink<CR>", { desc = "Follow a link" })
         end,
     },
 }
