@@ -18,6 +18,8 @@ local keymaps = {
   { mode = "n", lhs = "<leader>n", rhs = ":bn<CR>", desc = "Next buffer" },
   { mode = "n", lhs = "<leader>p", rhs = ":bp<CR>", desc = "Previous buffer" },
   { mode = "n", lhs = "<leader>x", rhs = ":bd<CR>", desc = "Close buffer" },
+  { mode = "n", lhs = "<Tab>", rhs = ":bn<CR>", desc = "Next buffer" },
+  { mode = "n", lhs = "<S-Tab>", rhs = ":bp<CR>", desc = "Previous buffer" },
 
   -- Move Lines in Visual Mode
   { mode = "v", lhs = "J", rhs = ":m '>+1<CR>gv=gv", desc = "Move selected lines down" },
