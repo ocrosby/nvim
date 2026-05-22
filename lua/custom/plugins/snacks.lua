@@ -24,37 +24,27 @@ return {
   keys = {
     {
       '\\',
-      function()
-        Snacks.explorer()
-      end,
+      function() Snacks.explorer() end,
       desc = 'Toggle Snacks Explorer',
     },
     {
       '<leader>e',
-      function()
-        Snacks.explorer()
-      end,
+      function() Snacks.explorer() end,
       desc = '[E]xplorer (Snacks)',
     },
     {
       '<leader>E',
-      function()
-        Snacks.explorer.reveal()
-      end,
+      function() Snacks.explorer.reveal() end,
       desc = '[E]xplorer reveal current file',
     },
     {
       '<leader>nd',
-      function()
-        Snacks.notifier.hide()
-      end,
+      function() Snacks.notifier.hide() end,
       desc = '[N]otifier [D]ismiss',
     },
     {
       '<leader>nh',
-      function()
-        Snacks.notifier.show_history()
-      end,
+      function() Snacks.notifier.show_history() end,
       desc = '[N]otifier [H]istory',
     },
   },
