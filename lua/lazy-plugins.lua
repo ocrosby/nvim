@@ -1,62 +1,14 @@
 -- [[ Configure and install plugins ]]
 --
---  To check the current status of your plugins, run
---    :Lazy
+-- lazy.nvim auto-discovers every spec under `lua/plugins/*.lua`. To add a
+-- plugin, drop a file there returning a `LazySpec`. To remove one, delete
+-- its file.
 --
---  You can press `?` in this menu for help. Use `:q` to close the window
---
---  To update plugins you can run
---    :Lazy update
---
--- NOTE: Here is where you install your plugins.
+--  :Lazy             — current plugin status (press `?` for help, `:q` to close)
+--  :Lazy sync        — install, update, and clean
+
 require('lazy').setup({
-  -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
-  { 'NMAC427/guess-indent.nvim', opts = {} },
-
-  -- modular approach: using `require 'path.name'` will
-  -- include a plugin definition from file lua/path/name.lua
-
-  require 'kickstart.plugins.gitsigns',
-
-  require 'kickstart.plugins.which-key',
-
-  require 'kickstart.plugins.telescope',
-
-  require 'kickstart.plugins.lspconfig',
-
-  require 'kickstart.plugins.conform',
-
-  require 'kickstart.plugins.blink-cmp',
-
-  require 'kickstart.plugins.tokyonight',
-
-  require 'kickstart.plugins.todo-comments',
-
-  require 'kickstart.plugins.mini',
-
-  require 'kickstart.plugins.treesitter',
-
-  -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
-  -- init.lua. If you want these files, they are in the repository, so you can just download them and
-  -- place them in the correct locations.
-
-  -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
-  --
-  --  Here are some example plugins that I've included in the Kickstart repository.
-  --  Uncomment any of the lines below to enable them (you will need to restart nvim).
-  --
-  -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
-
-  -- Personal plugin specs in `lua/custom/plugins/*.lua` (snacks.nvim, etc.).
-  { import = 'custom.plugins' },
-  --
-  -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
-  -- Or use telescope!
-  -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
-  -- you can continue same window with `<space>sr` which resumes last telescope search
+  { import = 'plugins' },
 }, { ---@diagnostic disable-line: missing-fields
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
