@@ -1,0 +1,210 @@
+*nvim-personal.txt*    Omar's personal Neovim distribution        *nvim-personal*
+
+==============================================================================
+CONTENTS                                              *nvim-personal-contents*
+
+  1. Introduction ........................... |nvim-personal-introduction|
+  2. Installation ........................... |nvim-personal-installation|
+  3. Layout ................................. |nvim-personal-layout|
+  4. Keymaps ................................ |nvim-personal-keymaps|
+     4.1 Global ............................. |nvim-personal-keymaps-global|
+     4.2 Window navigation .................. |nvim-personal-keymaps-windows|
+     4.3 Search (telescope) ................. |nvim-personal-keymaps-search|
+     4.4 Git hunks (gitsigns) ............... |nvim-personal-keymaps-hunks|
+     4.5 Toggle ............................. |nvim-personal-keymaps-toggle|
+     4.6 LSP ................................ |nvim-personal-keymaps-lsp|
+     4.7 Explorer (snacks) .................. |nvim-personal-keymaps-explorer|
+     4.8 Notifier (snacks) .................. |nvim-personal-keymaps-notifier|
+     4.9 Format ............................. |nvim-personal-keymaps-format|
+     4.10 Diagnostic ........................ |nvim-personal-keymaps-diagnostic|
+     4.11 Debug ............................. |nvim-personal-keymaps-debug|
+  5. Health check ........................... |nvim-personal-health|
+  6. Augroups ............................... |nvim-personal-augroups|
+
+==============================================================================
+1. INTRODUCTION                                   *nvim-personal-introduction*
+
+Modular Neovim distribution installed at `~/.config/nvim-personal/`. Launched
+side-by-side with any other Neovim configuration via the |$NVIM_APPNAME|
+environment variable.
+
+==============================================================================
+2. INSTALLATION                                   *nvim-personal-installation*
+
+Clone the repository into the personal config directory:
+>
+    git clone https://github.com/ocrosby/nvim.git ~/.config/nvim-personal
+<
+Launch with: >
+
+    NVIM_APPNAME=nvim-personal nvim
+<
+Or alias in your shell rc: >
+
+    alias nvim-personal='NVIM_APPNAME=nvim-personal nvim'
+<
+Setting `NVIM_APPNAME=nvim-personal` redirects every Neovim runtime path
+(config, data, state, cache) to a matching `nvim-personal` subdirectory,
+keeping this distribution isolated from any other config.
+
+==============================================================================
+3. LAYOUT                                                *nvim-personal-layout*
+>
+    ~/.config/nvim-personal/
+    ├── init.lua                  -- bootstrap
+    ├── lua/
+    │   ├── options.lua           -- editor options
+    │   ├── keymaps.lua           -- non-plugin keymaps
+    │   ├── lazy-bootstrap.lua    -- lazy.nvim installer
+    │   ├── lazy-plugins.lua      -- { import = 'plugins' }
+    │   ├── plugins/              -- one file per plugin spec
+    │   └── personal/
+    │       └── health.lua        -- :checkhealth nvim-personal
+    └── doc/
+        └── nvim-personal.txt     -- this file
+<
+==============================================================================
+4. KEYMAPS                                              *nvim-personal-keymaps*
+
+Leader is `<space>`. All `<leader>X` sub-groups are registered in which-key
+(`lua/plugins/which-key.lua`) so pressing `<leader>X` and pausing surfaces a
+labeled popup of the available continuations.
+
+Description convention: `[X]` brackets mark the mnemonic letter, with bracket
+case mirroring the keypress case. Uppercase variants of a key always mean
+"broader scope of the same action" (e.g. `hs` hunk → `hS` buffer), never a
+different action.
+
+------------------------------------------------------------------------------
+4.1 Global                                       *nvim-personal-keymaps-global*
+
+  `<Esc>`           clear search highlights
+  `<Esc><Esc>`      (terminal mode) exit to normal mode
+
+------------------------------------------------------------------------------
+4.2 Window navigation                           *nvim-personal-keymaps-windows*
+
+  `<C-h>`           move focus to the left window
+  `<C-j>`           move focus to the lower window
+  `<C-k>`           move focus to the upper window
+  `<C-l>`           move focus to the right window
+
+------------------------------------------------------------------------------
+4.3 Search (telescope)                           *nvim-personal-keymaps-search*
+
+  `<leader>sh`      [s]earch [h]elp
+  `<leader>sk`      [s]earch [k]eymaps
+  `<leader>sf`      [s]earch [f]iles
+  `<leader>ss`      [s]earch [s]elect telescope picker
+  `<leader>sw`      [s]earch current [w]ord (works in visual mode too)
+  `<leader>sg`      [s]earch by [g]rep
+  `<leader>sd`      [s]earch [d]iagnostics
+  `<leader>sr`      [s]earch [r]esume (re-open last picker)
+  `<leader>s.`      [s]earch recent files (`.` for repeat)
+  `<leader>sc`      [s]earch [c]ommands
+  `<leader>sn`      [s]earch [n]eovim config files
+  `<leader>s/`      live grep within currently open files
+  `<leader>/`       fuzzy-search inside the current buffer
+  `<leader><leader>` find existing buffers
+
+------------------------------------------------------------------------------
+4.4 Git hunks (gitsigns)                          *nvim-personal-keymaps-hunks*
+
+  `<leader>hs`      git [s]tage hunk (visual: range)
+  `<leader>hr`      git [r]eset hunk (visual: range)
+  `<leader>hS`      git [S]tage buffer
+  `<leader>hR`      git [R]eset buffer
+  `<leader>hp`      git [p]review hunk
+  `<leader>hi`      git preview hunk [i]nline
+  `<leader>hb`      git [b]lame line (full)
+  `<leader>hd`      git [d]iff against index
+  `<leader>hD`      git [D]iff against last commit
+  `<leader>hq`      git hunk [q]uickfix list (changes in this file)
+  `<leader>hQ`      git hunk [Q]uickfix list (all files in repo)
+
+------------------------------------------------------------------------------
+4.5 Toggle                                       *nvim-personal-keymaps-toggle*
+
+  `<leader>tb`      [t]oggle git current-line [b]lame
+  `<leader>tw`      [t]oggle git intra-line [w]ord diff
+  `<leader>th`      [t]oggle LSP inlay [h]ints (buffer-local; LSP-only)
+
+------------------------------------------------------------------------------
+4.6 LSP                                             *nvim-personal-keymaps-lsp*
+
+LSP keymaps use the `gr*` prefix per Neovim 0.11+ defaults. All are
+buffer-local, registered on `LspAttach`.
+
+  `grn`             [r]e[n]ame symbol
+  `gra`             [g]oto code [a]ction (visual: range)
+  `grD`             [g]oto [D]eclaration
+  `grr`             [g]oto [r]eferences
+  `gri`             [g]oto [i]mplementation
+  `grd`             [g]oto [d]efinition
+  `grt`             [g]oto [t]ype definition
+  `gO`              document [O]utline / symbols
+  `gW`              [W]orkspace symbols
+
+------------------------------------------------------------------------------
+4.7 Explorer (snacks)                          *nvim-personal-keymaps-explorer*
+
+  `\`               toggle snacks explorer
+  `<leader>e`       [e]xplorer toggle
+  `<leader>E`       [E]xplorer reveal current file
+
+------------------------------------------------------------------------------
+4.8 Notifier (snacks)                          *nvim-personal-keymaps-notifier*
+
+  `<leader>nd`      [n]otifier [d]ismiss visible notifications
+  `<leader>nh`      [n]otifier [h]istory
+  `<leader>nl`      (reserved for future "last message")
+
+------------------------------------------------------------------------------
+4.9 Format                                       *nvim-personal-keymaps-format*
+
+  `<leader>f`       [f]ormat buffer (via conform.nvim)
+
+------------------------------------------------------------------------------
+4.10 Diagnostic                              *nvim-personal-keymaps-diagnostic*
+
+  `<leader>q`       open diagnostic [q]uickfix list
+
+Navigation between diagnostics uses the standard `[d` / `]d` Vim grammar
+(provided by Neovim's diagnostic module).
+
+------------------------------------------------------------------------------
+4.11 Debug                                        *nvim-personal-keymaps-debug*
+
+The `nvim-dap` plugin is bundled. Keymaps activate on demand.
+
+  `<F5>`            debug: start / continue
+  `<F1>`            debug: step into
+  `<F2>`            debug: step over
+  `<F3>`            debug: step out
+  `<F7>`            debug: toggle DAP UI
+  `<leader>b`       debug: toggle [b]reakpoint
+  `<leader>B`       debug: set conditional [B]reakpoint (prompts for expression)
+
+==============================================================================
+5. HEALTH CHECK                                          *nvim-personal-health*
+
+Verify the runtime environment from inside Neovim: >
+
+    :checkhealth nvim-personal
+<
+Implemented in `lua/personal/health.lua`. Checks Neovim version (>= 0.11)
+and availability of `git`, `make`, `unzip`, and `rg`.
+
+==============================================================================
+6. AUGROUPS                                            *nvim-personal-augroups*
+
+All autocommand groups defined in this configuration use the `personal-*`
+prefix:
+
+  `personal-highlight-yank`     highlights yanked text on `TextYankPost`
+  `personal-lsp-attach`         per-buffer LSP setup on `LspAttach`
+  `personal-lsp-highlight`      symbol-under-cursor highlighting (CursorHold)
+  `personal-lsp-detach`         clears references on `LspDetach`
+
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:

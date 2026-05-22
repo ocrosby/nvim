@@ -19,11 +19,11 @@ Omar's personal Neovim distribution — installed at `~/.config/nvim-personal/` 
 
 ## Overview
 
-This is a modular Neovim configuration forked from [`dam9000/kickstart-modular.nvim`](https://github.com/dam9000/kickstart-modular.nvim). It is intentionally installed into `~/.config/nvim-personal/` rather than the default `~/.config/nvim/`, so it does not interfere with any other Neovim setup on the machine. You launch it by setting [`NVIM_APPNAME`](https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME) before invoking `nvim`, which also redirects all runtime state (data, cache, state, logs) to matching `nvim-personal` subdirectories.
+This is a modular Neovim configuration. It is intentionally installed into `~/.config/nvim-personal/` rather than the default `~/.config/nvim/`, so it does not interfere with any other Neovim setup on the machine. You launch it by setting [`NVIM_APPNAME`](https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME) before invoking `nvim`, which also redirects all runtime state (data, cache, state, logs) to matching `nvim-personal` subdirectories.
 
 ## Features
 
-- Modular Lua layout: `lua/options.lua`, `lua/keymaps.lua`, `lua/lazy-bootstrap.lua`, `lua/lazy-plugins.lua`, with per-plugin specs under `lua/kickstart/plugins/`
+- Modular Lua layout: `lua/options.lua`, `lua/keymaps.lua`, `lua/lazy-bootstrap.lua`, `lua/lazy-plugins.lua`, with per-plugin specs auto-discovered from `lua/plugins/`
 - Plugin management via [`lazy.nvim`](https://github.com/folke/lazy.nvim) with an auto-bootstrap step
 - LSP via `nvim-lspconfig`, completion via `blink.cmp`, formatting via `conform.nvim`, linting via `nvim-lint`, and debugging via `nvim-dap`
 - Telescope, Treesitter, gitsigns, todo-comments, which-key, and the `mini.nvim` suite preconfigured
@@ -104,10 +104,10 @@ NVIM_APPNAME=nvim-personal nvim path/to/file.lua
 | `lua/keymaps.lua` | Global key mappings |
 | `lua/lazy-bootstrap.lua` | Auto-clones `lazy.nvim` if missing |
 | `lua/lazy-plugins.lua` | Registers plugin specs with `lazy.nvim` |
-| `lua/kickstart/plugins/` | One file per built-in plugin spec |
-| `lua/custom/plugins/init.lua` | User extension point — personal plugins live here |
+| `lua/plugins/` | One file per plugin spec; auto-discovered by lazy.nvim |
+| `lua/personal/health.lua` | Health check — run `:checkhealth nvim-personal` |
 
-Toggle distribution-level defaults such as `vim.g.have_nerd_font` in `init.lua`. Comment in or out the kickstart plugin imports there to enable or disable bundled features.
+Toggle distribution-level defaults such as `vim.g.have_nerd_font` in `init.lua`. To enable or disable a plugin, add or delete its file under `lua/plugins/`.
 
 ## Development
 
@@ -122,7 +122,7 @@ stylua .
 To run the distribution's bundled health check from inside Neovim:
 
 ```vim
-:checkhealth kickstart
+:checkhealth nvim-personal
 ```
 
 ## Contributing
